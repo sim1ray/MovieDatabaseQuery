@@ -1,3 +1,7 @@
+/*
+ * GTE produces the HashSet of all values for the keys greater than or equal to the given key
+ */
+
 import java.util.HashMap;
 import java.util.HashSet;
 

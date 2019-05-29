@@ -1,3 +1,7 @@
+/*
+ * Equal returns the HashSet(of Movie IDs) for the given key.
+ */
+
 import java.util.HashMap;
 import java.util.HashSet;
 

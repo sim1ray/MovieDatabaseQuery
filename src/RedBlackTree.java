@@ -1,3 +1,8 @@
+/*
+ * Red Black Tree: balanced binary search tree.
+ * Provides put/get functions, along with helper methods to balance the tree.
+ */
+
 import edu.princeton.cs.algs4.Queue;
 
 public class RedBlackTree<Key extends  Comparable<Key>, Value> {
@@ -5,11 +10,13 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
     private Node root;
     private static boolean RED = true;
 
+    // Returns if tree contains given key
     public boolean contains(Key key) {
         if (key.equals(null)) throw new IllegalArgumentException();
         return get(key) != null;
     }
 
+    // Get value of the given key
     public Value get(Key key) {
         if (key == null) throw new IllegalArgumentException();
         return get(root, key);
@@ -28,6 +35,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return n.value;
     }
 
+    // Insert given key into the tree
     public void put(Key key, Value value) {
         if(key == null) throw new IllegalArgumentException();
         if (value == null) {
@@ -64,12 +72,14 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return n;
     }
 
+    // Flip the colors of the Node
     private void flipColors(Node n) {
         n.color = RED;
         n.left.color = !RED;
         n.right.color = !RED;
     }
 
+    // Check if tree is a 2-3 tree
     public boolean is23() {
         return is23(root);
     }
@@ -87,6 +97,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return is23(n.left) && is23(n.right);
     }
 
+    // Check if tree is balanced
     public boolean isBalanced() {
         int blackHeight = 0;
         Node n = root;
@@ -109,6 +120,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return isBalanced(n.left, blackHeight) && isBalanced(n.right, blackHeight);
     }
 
+    // Generate a list of the keys in sorted order
     public Iterable<Key> keys() {
         Queue<Key> queue = new Queue<Key>();
         keys(root, queue);
@@ -124,6 +136,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         keys(n.right, q);
     }
 
+    // Rotate Node to the right
     private Node rotateRight(Node n) {
         Node temp = n.left;
         n.left = temp.right;
@@ -135,6 +148,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return temp;
     }
 
+    // Check if Node is red
     private boolean isRed(Node n) {
         if (n == null) {
             return false;
@@ -142,6 +156,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return n.color == RED;
     }
 
+    // Rotate Node to the left
     private Node rotateLeft(Node n) {
         Node temp = n.right;
         n.right = temp.left;
@@ -153,6 +168,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return temp;
     }
 
+    // Returns number of nodes in tree
     private int size(Node n) {
         if (n == null) {
             return 0;
@@ -160,6 +176,7 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         return n.size;
     }
 
+    // Tree is made up of Node objects
     private class Node {
         Key key;
         Value value;
@@ -172,23 +189,6 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
             this.value = value;
             this.color = color;
         }
-    }
-
-    public static void main(String[] args) {
-        RedBlackTree<String, Integer> rdt = new RedBlackTree<>();
-        rdt.put("S", 3);
-        rdt.put("E", 5);
-        rdt.put("A", 14);
-        rdt.put("R", 2);
-        rdt.put("C", 1);
-        rdt.put("H", 14);
-
-        for (String key : rdt.keys()) {
-            System.out.println(key);
-        }
-
-        System.out.println(rdt.is23());
-        System.out.println(rdt.isBalanced());
     }
 
 }

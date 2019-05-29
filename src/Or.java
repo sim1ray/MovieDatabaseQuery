@@ -1,3 +1,7 @@
+/*
+ * Or returns the union of the HashSets produced by one or more Query objects.
+ */
+
 import java.util.HashMap;
 import java.util.HashSet;
 

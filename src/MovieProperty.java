@@ -1,3 +1,7 @@
+/*
+ * MovieProperty creates a red black tree for a field, and adds key/values to that red black tree.
+ */
+
 import java.util.HashSet;
 
 public class MovieProperty<T extends Comparable<T>> {
@@ -7,6 +11,7 @@ public class MovieProperty<T extends Comparable<T>> {
         rbt = new RedBlackTree<>();
     }
 
+    // add keys or values(append to HashSet if key already exists)
     public void add(T key, int id) {
         if (key == null) {
             return;
@@ -21,6 +26,7 @@ public class MovieProperty<T extends Comparable<T>> {
         this.rbt.put(key, hs);
     }
 
+    // Get the Red black tree
     public RedBlackTree<T, HashSet<Integer>> getRBT() {
         return rbt;
     }

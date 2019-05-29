@@ -1,8 +1,14 @@
+/*
+ * Movie objects represent movies that have the following attributes:
+ * title, if movie was shot in color/black and white, duration, director name, three
+ * actor names, the IMDB link, language, country, rating, year released, and IMDB score.
+ */
+
 public class Movie {
-    private int id;
+    private Integer id;
     private String color;
     private String title;
-    private int duration;
+    private Integer duration;
     private String director;
     private String actor1;
     private String actor2;
@@ -11,10 +17,11 @@ public class Movie {
     private String language;
     private String country;
     private String contentRating;
-    private int year;
-    private double imdbScore;
+    private Integer year;
+    private Double imdbScore;
 
-    public Movie(int id, String color, String title, int duration, String director, String actor1, String actor2, String actor3, String imdbLink, String language, String country, String contentRating, int year, double imdbScore) {
+    // Constructor
+    public Movie(Integer id, String color, String title, Integer duration, String director, String actor1, String actor2, String actor3, String imdbLink, String language, String country, String contentRating, Integer year, Double imdbScore) {
         this.id = id;
         this.color = color;
         this.title = title;
@@ -31,11 +38,12 @@ public class Movie {
         this.imdbScore = imdbScore;
     }
 
-    public int getId() {
+    // Getters and Setters
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,11 +63,11 @@ public class Movie {
         this.title = title;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
@@ -127,19 +135,19 @@ public class Movie {
         this.contentRating = contentRating;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public double getImdbScore() {
+    public Double getImdbScore() {
         return imdbScore;
     }
 
-    public void setImdbScore(double imdbScore) {
+    public void setImdbScore(Double imdbScore) {
         this.imdbScore = imdbScore;
     }
 

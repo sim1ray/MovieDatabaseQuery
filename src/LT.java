@@ -1,3 +1,7 @@
+/*
+ * LT produces the HashSet of all values for the keys less than the given key
+ */
+
 import java.util.HashMap;
 import java.util.HashSet;
 
