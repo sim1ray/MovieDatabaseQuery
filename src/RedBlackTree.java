@@ -21,9 +21,9 @@ public class RedBlackTree<Key extends  Comparable<Key>, Value> {
         }
         int compare = k.compareTo(n.key);
         if (compare < 0) {
-            get(n.left, k);
+            return get(n.left, k);
         } else if (compare > 0) {
-            get(n.right, k);
+            return get(n.right, k);
         }
         return n.value;
     }

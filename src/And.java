@@ -13,8 +13,8 @@ public class And<T extends Comparable<T>> implements Query {
 
     @Override
     public HashSet<Integer> execute(HashMap<String, MovieProperty> hm) {
-        HashSet<Integer> s = new HashSet<>();
-        for (int i = 0; i < q.length; i++) {
+        HashSet<Integer> s = q[0].execute(hm);
+        for (int i = 1; i < q.length; i++) {
             s.retainAll(q[i].execute(hm));   //intersection
         }
         return s;

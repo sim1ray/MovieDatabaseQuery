@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -42,7 +41,7 @@ public class MoviesDB<T extends Comparable<T>> {
     // Create new Red Black tree sorted by the given field
     public void addFieldIndex(String field) {
         switch (field) {
-            case "title_year":
+            case "year":
                 MovieProperty rbtYear = new MovieProperty();
                 for (Movie m : this.movies) {
                     int year = m.getYear();
@@ -138,24 +137,30 @@ public class MoviesDB<T extends Comparable<T>> {
     }
 
     //Returns the hash map for red black trees for each of the fields
-    public HashMap<String, MovieProperty> getFieldMap(){
+    public HashMap<String, MovieProperty> getFields(){
         return fields;
     }
 
     //Prints movie details given the movie id
     public void print(int id) {
-        Movie m = this.movies[id];
-        System.out.println(m);
+        Movie m = this.movies[id-1];
+        System.out.println(m + "\n");
+        System.out.println("--------------------------------------------------------------------\n");
     }
 
     public static void main(String[] args) throws FileNotFoundException {
         MoviesDB movieDB = new MoviesDB("/users/Simone/Downloads/Simple.csv");
         movieDB.addFieldIndex("year");
         movieDB.addFieldIndex("imdb_score");
-        Query query=new And(new Equal("year",2012),new Equal("imdb_score",6.1));
-        HashSet<Integer> result = (HashSet<Integer>) query.execute(movieDB.getFieldMap());
+        movieDB.addFieldIndex("color");
+        movieDB.addFieldIndex("actor_name");
+        //Query query = new Not(new Or(new GTE("year",2009),new GT("imdb_score",6.5)));
+        //Query query = new And(new GTE("year",2009),new GT("imdb_score",6.5));
+        //Query query = new Or(new LT("year",2009),new GTE("imdb_score",7.8));
+        Query query = new And(new Equal("color", "Color"), new LTE("year", 2007), new Equal("actor_name", "James Franco"));
+        HashSet<Integer> result = (HashSet<Integer>) query.execute(movieDB.getFields());
         if(result!=null)
-            System.out.println(result);
+            System.out.println(result + "\n");
         Iterator<Integer> idIterator = result.iterator();
         while(idIterator.hasNext()) {
             int id = idIterator.next();
@@ -163,10 +168,4 @@ public class MoviesDB<T extends Comparable<T>> {
         }
     }
 
-//    public static void main(String[] args) throws FileNotFoundException {
-//        MoviesDB db = new MoviesDB("/users/Simone/Downloads/Simple.csv");
-//        for (int i = 0; i < db.movies.length; i++) {
-//            System.out.println(db.movies[i]);
-//        }
-//    }
 }

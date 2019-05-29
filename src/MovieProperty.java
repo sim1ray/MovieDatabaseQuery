@@ -8,9 +8,14 @@ public class MovieProperty<T extends Comparable<T>> {
     }
 
     public void add(T key, int id) {
-        HashSet<Integer> hs = new HashSet<>();
+        if (key == null) {
+            return;
+        }
+        HashSet<Integer> hs;
         if (this.rbt.contains(key)) {
             hs = this.rbt.get(key);
+        } else {
+            hs = new HashSet<>();
         }
         hs.add(id);
         this.rbt.put(key, hs);

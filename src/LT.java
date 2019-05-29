@@ -17,8 +17,10 @@ public class LT<T extends Comparable<T>> implements Query {
 
         HashSet<Integer> result = new HashSet<>();
         for (T key : rbt.keys()) {
-            while (lessThan(key, rbtKey)) {
+            if (lessThan(key, rbtKey)) {
                 result.addAll(rbt.get(key));
+            } else {
+                break;
             }
         }
 

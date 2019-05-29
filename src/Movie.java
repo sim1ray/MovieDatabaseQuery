@@ -148,7 +148,7 @@ public class Movie {
         return  "id: " + id + '\n' +
                 "color: " + color + '\n' +
                 "title: " + title + '\n' +
-                "duration: " + duration +
+                "duration: " + duration + "\n" +
                 "director: " + director + '\n' +
                 "actor1: " + actor1 + '\n' +
                 "actor2: " + actor2 + '\n' +

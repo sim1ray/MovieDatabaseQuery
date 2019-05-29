@@ -17,8 +17,10 @@ public class LTE<T extends Comparable<T>> implements Query {
 
         HashSet<Integer> result = new HashSet<>();
         for (T key : rbt.keys()) {
-            while (lessThanEqual(key, rbtKey)) {
+            if (lessThanEqual(key, rbtKey)) {
                 result.addAll(rbt.get(key));
+            } else {
+                break;
             }
         }
         return result;
