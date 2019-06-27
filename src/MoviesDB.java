@@ -211,7 +211,8 @@ public class MoviesDB<T extends Comparable<T>> {
         movieDB.addFieldIndex("imdb_score");
         movieDB.addFieldIndex("color");
         movieDB.addFieldIndex("actor_name");
-        Query query = new Equal("color", "Black and White");
+        Query query = new And(new Equal("color", "Black and White"), new GT("imdb_score", 8.0));
+        //Query query = new Equal("color", "Black and White");
         //Query query = new Not(new Or(new GTE("year",2009),new GT("imdb_score",6.5)));
         //Query query = new And(new GTE("year",2009),new GT("imdb_score",6.5));
         //Query query = new Or(new LT("year",2009),new GTE("imdb_score",7.8));
