@@ -206,7 +206,7 @@ public class MoviesDB<T extends Comparable<T>> {
 
     // Test Run
     public static void main(String[] args) throws FileNotFoundException {
-        MoviesDB movieDB = new MoviesDB("/users/Simone/Downloads/movie_metadata.csv");
+        MoviesDB movieDB = new MoviesDB("src/movie_metadata.csv");
         movieDB.addFieldIndex("year");
         movieDB.addFieldIndex("imdb_score");
         movieDB.addFieldIndex("color");
