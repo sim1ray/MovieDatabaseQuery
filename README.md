@@ -29,7 +29,9 @@ The query is then executed using the indexing trees and the resulting list of mo
 
 ## Sample Query and Corresponding Output
 
+```
 Query query = new And(new Equal("color", "Black and White"), new GT("imdb_score", 8.0));
+```
 
 ![Alt text](Pic.png)
 
